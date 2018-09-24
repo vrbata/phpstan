@@ -211,7 +211,7 @@ class CommandHelper
 			} else {
 				$finder = new Finder();
 				$finder->followLinks();
-				foreach ($finder->files()->name('*.{' . implode(',', $fileExtensions) . '}')->in($path) as $fileInfo) {
+				foreach ($finder->files()->name('*.{' . implode(',', $fileExtensions) . '}')->in($path)->exclude(['vendor']) as $fileInfo) {
 					$files[] = $fileHelper->normalizePath($fileInfo->getPathname());
 					$onlyFiles = false;
 				}
